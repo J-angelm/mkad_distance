@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Moscow Ring Road Distance Calculator{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="card-deck mb-3">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-body">
+        <form action="get_distance" method="get">
+          <label for="address">Insert address</label>
+          <input type="text" class="form-control" name="address" id="address" value="" required>
+          <br>
+    
+          {% if api_key == None %}
+          <label for="api_key">Enter Yandex API-Key</label>
+          <input type="text" class="form-control" name="api_key" id="api_key" value="" required>
+          <br>
+          {% endif %}
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+        </form>
+
+        {% if api_key != None %}
+          <form action="clear_key" method="get">
+            <br>
+            <label for="api_key">Clear Yandex API-Key</label>
+            <br>
+            <button class="btn btn-primary" type="submit">Clear</button>
+            <br>
+          </form>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

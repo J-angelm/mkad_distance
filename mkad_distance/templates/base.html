@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Moscow Ring Road Distance Calculator</h5>
+    <a class="btn btn-danger" href="{{ url_for('mkad_distance.clear_log') }}">Clear log</a>
+    <a class="btn btn-outline-primary" href="{{ url_for('mkad_distance.log') }}">See log file</a>
+    <a class="btn btn-outline-primary" href="{{ url_for('mkad_distance.home') }}">Home</a>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {% if category == "error" %}
+          <div class="container text-center">
+            <div class="p-3 mb-2 bg-danger text-white">{{ message }}</div>
+          </div>
+          <br>
+        {% elif category == "success" %}
+          <div class="container text-center">
+            <div class="p-3 mb-2 bg-success text-white">{{ message }}</div>
+          </div>
+          <br>
+        {% endif %}
+      {% endfor  %}
+    {% endif %}
+  {% endwith %}
+
+  {% block main %}{% endblock %}
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{{ url_for('static', filename='jquery-3.3.1.slim.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</body>
+
+</html>
