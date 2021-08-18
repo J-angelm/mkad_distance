@@ -1,5 +1,5 @@
 # Moscow Automobile Ring Road Distance Calculator
-This app calculates the distance (in kilometers) from any given address to the Moscow Automobile Ring Road (MKAD).
+This app calculates the distance (in kilometers) from any given address to the Moscow Automobile Ring Road (MKAD). If the address is located inside of the MKAD area, then an error message is displayed.
 
 To Calculate the distance you will need a Yandex API Key (you can get it at https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/about.html for free).
 
