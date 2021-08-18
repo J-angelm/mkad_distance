@@ -81,7 +81,7 @@ def get_distance():
     return redirect(url_for('mkad_distance.home'))
 
 
-def validate_coordinates(address:str):
+def validate_coordinates(address):
     """
     Verify if the given address is located inside of the MKAD
 
@@ -116,11 +116,15 @@ def validate_coordinates(address:str):
     safe_params = urllib.parse.urlencode(params, safe=', ')
     r = requests.get(URL, params=safe_params)
 
+    data = r.json()
+
     if r.status_code != 200:
-        flash("Yandex HTTP request failed", "error")
+        if data['message'] == "Invalid key":
+            flash("Invalid Yandex API key", "error")
+        else:
+            flash("Yandex HTTP request failure", "error")
         return False
 
-    data = r.json()
     if data['response']['GeoObjectCollection']['featureMember'] == []:
         return True
     else:
@@ -128,7 +132,7 @@ def validate_coordinates(address:str):
                                         "Please enter another address.", "error")
         return False
 
-def calculate_distance(address:str):
+def calculate_distance(address):
     """
     Calculate the distance from the address to the MKAD
 
