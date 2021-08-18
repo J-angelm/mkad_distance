@@ -1,5 +1,7 @@
 # Moscow Automobile Ring Road Distance Calculator
-To Calculate the distance from any address to the MKAD, you will need a Yandex API Key (you can get it at https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/about.html for free).
+This app calculates the distance (in kilometers) from any given address to the Moscow Automobile Ring Road (MKAD).
+
+To Calculate the distance you will need a Yandex API Key (you can get it at https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/about.html for free).
 
 To execute the Flask blueprint:
 1. Create a new directory and clone this repo
